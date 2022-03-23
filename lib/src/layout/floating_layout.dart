@@ -90,7 +90,7 @@ class _FloatingLayoutState extends State<FloatingLayout> {
                           Positioned.fill(
                             child: _getRemoteViews(widget.client.sessionController.value.mainAgoraUser.uid),
                           ),
-                          Align(
+                         /* Align(
                             alignment: Alignment.topRight,
                             child: widget.enableHostControl == null || false
                                 ? Container()
@@ -113,7 +113,7 @@ class _FloatingLayoutState extends State<FloatingLayout> {
                                               .mainAgoraUser.uid,
                                     ),
                                   ),
-                          ),
+                          ),*/
                         ],
                       ),
                     )
