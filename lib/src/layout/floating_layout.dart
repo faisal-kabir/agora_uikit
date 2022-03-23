@@ -123,24 +123,11 @@ class _FloatingLayoutState extends State<FloatingLayout> {
                         child: widget.client.sessionController.value
                                 .isLocalVideoDisabled
                             ? widget.disabledVideoWidget
-                            : Stack(
-                                children: [
-                                  Container(
-                                    color: Colors.black,
-                                    child: Center(
-                                      child: Text(
-                                        'Local User',
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                    ),
-                                  ),
-                                  Column(
-                                    children: [
-                                      _videoView(_getLocalViews()),
-                                    ],
-                                  ),
-                                ],
-                              ),
+                            : Column(
+                              children: [
+                                _videoView(_getLocalViews()),
+                              ],
+                        ),
                       ),
                     ),
               Container(
@@ -179,14 +166,6 @@ class _FloatingLayoutState extends State<FloatingLayout> {
                                             color: Colors.black,
                                             child: Stack(
                                               children: [
-                                                Center(
-                                                  child: Text(
-                                                    'Local User',
-                                                    style: TextStyle(
-                                                      color: Colors.white,
-                                                    ),
-                                                  ),
-                                                ),
                                                 !widget
                                                         .client
                                                         .sessionController

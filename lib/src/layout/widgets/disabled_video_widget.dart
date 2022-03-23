@@ -14,10 +14,8 @@ class _DisabledVideoWidgetState extends State<DisabledVideoWidget> {
     return Container(
       color: Colors.black,
       padding: const EdgeInsets.all(8.0),
-      child: Center(
-        child: Image.asset(
-          'assets/logo.png',
-        ),
+      child: const Center(
+        child: Icon(Icons.video_call,color: Colors.white,),
       ),
     );
   }
