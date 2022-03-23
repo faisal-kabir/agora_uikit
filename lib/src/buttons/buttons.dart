@@ -104,38 +104,32 @@ class _AgoraVideoButtonsState extends State<AgoraVideoButtons> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Container(
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              physics: BouncingScrollPhysics(),
-              child: Container(
-                child: widget.enabledButtons == null
-                    ? Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          _disableVideoButton(),
-                          _switchCameraButton(),
-                          _muteMicButton(),
-                          _disconnectCallButton(),
-                          if (widget.extraButtons != null)
-                            for (var i = 0;
-                                i < widget.extraButtons!.length;
-                                i++)
-                              widget.extraButtons![i]
-                        ],
-                      )
-                    : Row(
-                        children: [
-                          for (var i = 0; i < buttonList!.length; i++)
-                            buttonList[i],
-                          if (widget.extraButtons != null)
-                            for (var i = 0;
-                                i < widget.extraButtons!.length;
-                                i++)
-                              widget.extraButtons![i]
-                        ],
-                      ),
-              ),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            physics: const BouncingScrollPhysics(),
+            child: Container(
+              child: widget.enabledButtons == null
+                  ? Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        _disableVideoButton(),
+                        _switchCameraButton(),
+                        _muteMicButton(),
+                        _disconnectCallButton(),
+                        if (widget.extraButtons != null)
+                          for (var i = 0; i < widget.extraButtons!.length; i++)
+                            widget.extraButtons![i]
+                      ],
+                    )
+                  : Row(
+                      children: [
+                        for (var i = 0; i < buttonList!.length; i++)
+                          buttonList[i],
+                        if (widget.extraButtons != null)
+                          for (var i = 0; i < widget.extraButtons!.length; i++)
+                            widget.extraButtons![i]
+                      ],
+                    ),
             ),
           ),
         ],
@@ -148,6 +142,10 @@ class _AgoraVideoButtonsState extends State<AgoraVideoButtons> {
         ? RawMaterialButton(
             onPressed: () => widget.client.sessionController.toggleMute(),
             child: widget.muteButtonChild,
+            shape: const CircleBorder(),
+            elevation: 2.0,
+            fillColor: Colors.white,
+            padding: const EdgeInsets.all(12.0),
           )
         : RawMaterialButton(
             onPressed: () => widget.client.sessionController.toggleMute(),
@@ -160,7 +158,7 @@ class _AgoraVideoButtonsState extends State<AgoraVideoButtons> {
                   : Colors.black,
               size: 30.0,
             ),
-            shape: CircleBorder(),
+            shape: const CircleBorder(),
             elevation: 2.0,
             fillColor: widget.client.sessionController.value.isLocalUserMuted
                 ? Colors.black
@@ -174,11 +172,15 @@ class _AgoraVideoButtonsState extends State<AgoraVideoButtons> {
         ? RawMaterialButton(
             onPressed: widget.onDisconnectButtonClick,
             child: widget.disconnectButtonChild,
+            shape: const CircleBorder(),
+            elevation: 2.0,
+            fillColor: Colors.white,
+            padding: const EdgeInsets.all(12.0),
           )
         : RawMaterialButton(
             onPressed: widget.onDisconnectButtonClick,
-            child: Icon(Icons.call_end, color: Colors.white, size: 30),
-            shape: CircleBorder(),
+            child: const Icon(Icons.call_end, color: Colors.white, size: 30),
+            shape: const CircleBorder(),
             elevation: 2.0,
             fillColor: Colors.redAccent,
             padding: const EdgeInsets.all(15.0),
@@ -190,15 +192,19 @@ class _AgoraVideoButtonsState extends State<AgoraVideoButtons> {
         ? RawMaterialButton(
             onPressed: () => widget.client.sessionController.switchCamera(),
             child: widget.switchCameraButtonChild,
+            shape: const CircleBorder(),
+            elevation: 2.0,
+            fillColor: Colors.white,
+            padding: const EdgeInsets.all(12.0),
           )
         : RawMaterialButton(
             onPressed: () => widget.client.sessionController.switchCamera(),
-            child: Icon(
+            child: const Icon(
               Icons.switch_camera,
               color: Colors.black,
               size: 30.0,
             ),
-            shape: CircleBorder(),
+            shape: const CircleBorder(),
             elevation: 2.0,
             fillColor: Colors.white,
             padding: const EdgeInsets.all(12.0),
@@ -210,6 +216,10 @@ class _AgoraVideoButtonsState extends State<AgoraVideoButtons> {
         ? RawMaterialButton(
             onPressed: () => widget.client.sessionController.toggleCamera(),
             child: widget.disableVideoButtonChild,
+            shape: const CircleBorder(),
+            elevation: 2.0,
+            fillColor: Colors.white,
+            padding: const EdgeInsets.all(12.0),
           )
         : RawMaterialButton(
             onPressed: () => widget.client.sessionController.toggleCamera(),
@@ -222,7 +232,7 @@ class _AgoraVideoButtonsState extends State<AgoraVideoButtons> {
                   : Colors.black,
               size: 30.0,
             ),
-            shape: CircleBorder(),
+            shape: const CircleBorder(),
             elevation: 2.0,
             fillColor:
                 widget.client.sessionController.value.isLocalVideoDisabled
